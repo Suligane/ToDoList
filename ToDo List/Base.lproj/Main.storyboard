@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="O1Q-Le-D2I">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="O1Q-Le-D2I">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O1Q-Le-D2I" id="A5f-G8-kZ1">
@@ -33,12 +34,81 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo List" id="af5-Jj-yst">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="L1L-0Q-l3A"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="L1L-0Q-l3A">
+                            <connections>
+                                <segue destination="Vfg-5O-if3" kind="show" id="bj0-Cj-e9x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDf-mG-Mjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="448.80000000000001" y="123.68815592203899"/>
+        </scene>
+        <!--Add To Do View Controller-->
+        <scene sceneID="AWJ-WO-1KD">
+            <objects>
+                <viewController id="Vfg-5O-if3" customClass="AddToDoViewController" customModule="ToDo_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fwD-Px-2Ix">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n82-BG-7UE">
+                                <rect key="frame" x="168" y="84" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1J-on-nac">
+                                <rect key="frame" x="20" y="129" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDz-A0-HM8">
+                                <rect key="frame" x="147.5" y="204" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7wI-mG-fZb">
+                                <rect key="frame" x="163" y="233" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-nd-bO2">
+                                <rect key="frame" x="172" y="281" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="Vfg-5O-if3" eventType="touchUpInside" id="atD-Hw-0MB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VDz-A0-HM8" firstAttribute="top" secondItem="b1J-on-nac" secondAttribute="bottom" constant="45" id="D6k-Hg-3aG"/>
+                            <constraint firstItem="b1J-on-nac" firstAttribute="top" secondItem="n82-BG-7UE" secondAttribute="bottom" constant="24" id="Dqp-wf-ZNo"/>
+                            <constraint firstItem="n82-BG-7UE" firstAttribute="top" secondItem="EPT-iI-y0z" secondAttribute="top" constant="20" id="HvV-9w-ZRz"/>
+                            <constraint firstItem="h5z-nd-bO2" firstAttribute="centerX" secondItem="fwD-Px-2Ix" secondAttribute="centerX" id="JsD-CN-rrG"/>
+                            <constraint firstItem="EPT-iI-y0z" firstAttribute="trailing" secondItem="b1J-on-nac" secondAttribute="trailing" constant="20" id="Q14-0x-p9B"/>
+                            <constraint firstItem="h5z-nd-bO2" firstAttribute="top" secondItem="7wI-mG-fZb" secondAttribute="bottom" constant="17" id="SpV-OC-E6Y"/>
+                            <constraint firstItem="7wI-mG-fZb" firstAttribute="top" secondItem="VDz-A0-HM8" secondAttribute="bottom" constant="8" id="ZgD-qr-eW8"/>
+                            <constraint firstItem="b1J-on-nac" firstAttribute="leading" secondItem="EPT-iI-y0z" secondAttribute="leading" constant="20" id="fV1-R8-8RO"/>
+                            <constraint firstItem="b1J-on-nac" firstAttribute="centerX" secondItem="fwD-Px-2Ix" secondAttribute="centerX" id="g60-xU-HKC"/>
+                            <constraint firstItem="n82-BG-7UE" firstAttribute="centerX" secondItem="fwD-Px-2Ix" secondAttribute="centerX" id="lWM-zX-Mbh"/>
+                            <constraint firstItem="VDz-A0-HM8" firstAttribute="centerX" secondItem="fwD-Px-2Ix" secondAttribute="centerX" id="uuP-58-oh0"/>
+                            <constraint firstItem="7wI-mG-fZb" firstAttribute="centerX" secondItem="fwD-Px-2Ix" secondAttribute="centerX" id="vgM-M7-ql4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EPT-iI-y0z"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="importantSwitch" destination="7wI-mG-fZb" id="KpP-hP-tVn"/>
+                        <outlet property="titleTextField" destination="b1J-on-nac" id="OXN-Z9-0UC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3a-AM-zPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1181.5999999999999" y="123.68815592203899"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mUi-dO-MjC">
